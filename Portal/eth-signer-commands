@@ -1,0 +1,14 @@
+sudo apt-get update
+sudo apt-get install default-jre
+wget https://artifacts.consensys.net/public/ethsigner/raw/names/ethsigner.tar.gz/versions/21.3.2/ethsigner-21.3.2.tar.gz
+tar -xf ethsigner-21.3.2.tar.gz
+cd ethsigner-21.3.2
+
+
+bin/ethsigner --chain-id=43112 --downstream-http-host=176.236.121.139 --downstream-http-port=8545 --http-listen-port=8560 file-based-signer --key-file=keyFile --password-file=passwordFile
+
+expire / user based auth / latest verified document
+
+
+bin/ethsigner --chain-id=43112 --downstream-http-host=176.236.121.139 --downstream-http-path=/ext/bc/C/rpc --downstream-http-port=9656 file-based-signer --key-file=keyFile --password-file=passwordFile
+
