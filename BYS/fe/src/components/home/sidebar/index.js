@@ -14,6 +14,8 @@ export default function SiderBar() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
+        position: "sticky",
+        top: 0,
       }}
     >
       {" "}
