@@ -1,9 +1,19 @@
 from rest_framework.decorators import api_view, permission_classes, parser_classes
-from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework.permissions import AllowAny
 
 from api.models import Authority
+from api.serializers import AuthorityDisplaySerializer
 from be.responses import response_200, is_request_valid, response_400, response_500
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+@parser_classes([JSONParser])
+def get_authorities(request):
+    authorities = Authority.objects.all().order_by('-created_at')
+    serializer = AuthorityDisplaySerializer(instance=authorities, many=True)
+    return response_200(data=serializer.data)
 
 
 @api_view(['POST'])
