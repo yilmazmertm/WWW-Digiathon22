@@ -10,7 +10,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { blobToSHA256 } from "file-to-sha256";
 import axios from "axios";
 import { controlDocument } from "../../Utils/utils";
-
+import styles from "./document.module.css";
 const api = axios.create({ baseURL: process.env.REACT_APP_SERVER_URL });
 
 const theme = createTheme();
@@ -25,52 +25,42 @@ export default function DocumentFile() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}></Avatar>
-          <Typography component="h1" variant="h5">
-            Belge Sorgula
-          </Typography>
-          <Box component="form" noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Belge No:"
-              autoFocus
-              onChange={(e) => setDocId(e.target.value)}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              type="file"
-              id="password"
-              autoComplete="current-password"
-              onChange={(e) => generateKey(e.target.files[0])}
-            />
-            <Button
-              fullWidth
+    <>
+      <div>
+        <div className={styles.text}>Belge Sorgula</div>
+        <div className={styles.container}>
+          <div className={styles.section}>
+            <div className={styles.input}>
+              <div className={styles.selectTitle}>Belge No</div>
+              <div>
+                <input onChange={(e) => setDocId(e.target.value)}></input>
+              </div>
+            </div>
+          </div>
+          <div className={styles.section}>
+            <div className={styles.input}>
+              <div className={styles.selectTitle}>Belge</div>
+              <div>
+                <input
+                  type={"file"}
+                  onChange={(e) => generateKey(e.target.files[0])}
+                ></input>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button
+              className={styles.button}
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              size="large"
               onClick={() => controlDocument(docId, docHash)}
             >
-              Sorgula
-            </Button>
-          </Box>
-        </Box>
-      </Container>
-    </ThemeProvider>
+              Onayla
+            </button>
+          </div>
+          <div className={styles.alert}></div>
+        </div>
+      </div>
+    </>
   );
 }
