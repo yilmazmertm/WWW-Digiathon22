@@ -9,6 +9,9 @@ import {
 } from "@react-pdf/renderer";
 import { Button } from "@mui/material";
 import { blobToSHA256 } from "file-to-sha256";
+import axios from "axios";
+
+const api = axios.create({ baseURL: process.env.REACT_APP_SERVER_URL });
 
 const styles = StyleSheet.create({
   page: {
@@ -24,7 +27,6 @@ const styles = StyleSheet.create({
 });
 
 export default function DocumentPDF({ name, surname }) {
-  const [hash, setHash] = useState("");
   const MyDocument = () => {
     return (
       <Document>
@@ -42,7 +44,11 @@ export default function DocumentPDF({ name, surname }) {
 
   async function generateKey(blob) {
     const hashTemp = await blobToSHA256(blob);
-    setHash(hashTemp);
+    api
+      .post("transact", {
+        documentHash: hashTemp,
+      })
+      .then((res) => alert("Belge oluşturuldu."));
   }
 
   return (

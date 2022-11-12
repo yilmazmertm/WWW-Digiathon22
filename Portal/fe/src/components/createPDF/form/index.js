@@ -1,5 +1,5 @@
 import React from "react";
-import { TextField, Card, Button } from "@mui/material";
+import { TextField, Card } from "@mui/material";
 
 export default function Form({ setName, setSurname }) {
   return (
