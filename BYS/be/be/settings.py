@@ -74,3 +74,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 BASE_URL_BE = "http://localhost:8000"
 CORS_ORIGIN_ALLOW_ALL = True
+RPC_URL = "http://176.236.121.139:9656/ext/bc/C/rpc"

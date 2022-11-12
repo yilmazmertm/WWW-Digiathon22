@@ -2,9 +2,11 @@ from rest_framework.decorators import api_view, permission_classes, parser_class
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework.permissions import AllowAny
 
-from api.models import Authority
+from api.models import Authority, Sign
 from api.serializers import AuthorityDisplaySerializer
+from api.utils import connect_w3_instance
 from be.responses import response_200, is_request_valid, response_400, response_500
+from eth_account.messages import encode_defunct
 
 
 @api_view(['GET'])
@@ -50,3 +52,35 @@ def get_authority(request, wallet_address):
 
     serializer = AuthorityDisplaySerializer(instance=authority, many=False)
     return response_200(data=serializer.data)
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_text_to_sign(request, wallet_address):
+    sign = Sign.objects.create(
+        wallet_address=wallet_address
+    )
+
+    return response_200(
+        data=sign.text
+    )
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def verify_signature(request, wallet_address, signature):
+    w3 = connect_w3_instance()
+    if w3 is False:
+        return response_400()
+
+    sign = Sign.objects.filter(wallet_address=wallet_address).last()
+
+    raw_text = sign.text
+    hashed_text_to_sign = encode_defunct(text=raw_text)
+    returned_account = w3.eth.account.recover_message(hashed_text_to_sign, signature=signature)
+    returned_account = returned_account.lower()
+
+    if returned_account == wallet_address:
+        return response_200()
+    else:
+        return response_400()
