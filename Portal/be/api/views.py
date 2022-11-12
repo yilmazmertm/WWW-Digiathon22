@@ -33,17 +33,22 @@ def transact(request):
     w3 = connect_w3_instance("http://127.0.0.1:8545")
     if w3 is False:
         return response_500()
+    try:
+        w3_avax = connect_w3_instance(settings.RPC_URL_AVAX)
 
-    w3_avax = connect_w3_instance(settings.RPC_URL_AVAX)
-
-    contract = w3_avax.eth.contract(address=settings.CONTRACT_ADDRESS, abi=get_abi())
-    tx = contract.functions.registerDocument(document_hash, document_id).build_transaction({
-        'from': '0xEE341dC67907a7bF4b33dB85B1e725bDFa8ed1fC',
-        'gasPrice': 25000000000
-    })
-    y = w3.eth.send_transaction(tx)
-    w3.eth.wait_for_transaction_receipt(Web3.toHex(y))
-    return response_200(data={
-        "docId": document_id,
-        "txHash": Web3.toHex(y)
-    })
+        contract = w3_avax.eth.contract(address=settings.CONTRACT_ADDRESS, abi=get_abi())
+        tx = contract.functions.registerDocument(document_hash, document_id).build_transaction({
+            'from': '0xEE341dC67907a7bF4b33dB85B1e725bDFa8ed1fC',
+            'gasPrice': 25000000000
+        })
+        y = w3.eth.send_transaction(tx)
+        w3.eth.wait_for_transaction_receipt(Web3.toHex(y))
+        return response_200(data={
+            "docId": document_id,
+            "txHash": Web3.toHex(y)
+        })
+    except Exception as e:
+        return response_200(data={
+            "docId": "Eth Signer must be set up",
+            "txHash": "Eth Signer must be set up"
+        })
