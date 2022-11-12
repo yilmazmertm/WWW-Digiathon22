@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BysListCard from "../Card/BysListCard";
+import axios from "axios";
+
+const api = axios.create({ baseURL: process.env.REACT_APP_SERVER_URL });
+
 export default function List() {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    api
+      .get("get-authorities")
+      .then((res) => setData(res.data.data))
+      .catch((e) => console.error(e));
+  }, []);
+
   return (
     <>
-      <BysListCard />
+      <BysListCard data={data} />
     </>
   );
 }
