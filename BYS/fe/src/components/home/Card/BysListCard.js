@@ -5,35 +5,38 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { CardHeader, Grid } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
-
+import styles from "./byList.module.css";
+import Logo from "../../../Asset/AdaletBakanligi.png";
 export default function BysListCard(data) {
   return (
     <>
       {data.data.map((data, i) => {
         return (
-          <Grid key={i}>
-            <Box sx={{ maxWidth: 400, boxShadow: 3, borderRadius: 5, mt: 5 }}>
-              <Card variant="outlined" sx={{ borderRadius: 5 }}>
-                <CardContent>
-                  <Grid display={"flex"}>
-                    <Avatar src={data.logo_url} sx={{width: 70, height: 70}} />
-                    <CardHeader
-                      title={data.name}
-                      sx={{ fontSize: 14, fontWeight: 900, ml: 5 }}
-                      color="text.secondary"
-                      gutterBottom
-                    ></CardHeader>
-                  </Grid>
-                  <Typography variant="h5" component="div">
-                    BDS: {data.origin_code}
-                  </Typography>
-                  <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    Wallet Adress: {data.wallet_address}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Box>
-          </Grid>
+          <div className={styles.container} key={i}>
+            <div className={styles.header}>
+              <div className={styles.horizontal}>
+                <div className={styles.logo}>
+                  <img src={data.logo_url} alt="logo" />
+                </div>
+                <div className={styles.title}>{data.name}</div>
+              </div>
+            </div>
+            <div className={styles.content}>
+              <div className={styles.section}>
+                <div className={styles.text}>
+                  EBDS: <span>{data.origin_code}</span>{" "}
+                </div>
+                <div className={styles.value}>
+                  Cüzdan Adresi: <span>{data.wallet_address}</span>{" "}
+                </div>
+              </div>
+              <div className={styles.section}>
+                <div className={styles.text}></div>
+                <div className={styles.value}></div>
+              </div>
+              <div className={styles.line}></div>
+            </div>
+          </div>
         );
       })}
     </>

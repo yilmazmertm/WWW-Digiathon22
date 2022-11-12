@@ -1,0 +1,29 @@
+.container {
+    background: linear-gradient(267.27deg, #01A6F0 1.57%, #0047FF 98.69%);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: sticky;
+    width: 550px;
+    margin-left: 0px;
+    top:0
+}  
+.title {
+    font-size: 40px;
+    font-weight:900;
+    font-family: "Inter";
+    color: #ffff
+    ;
+}
+.text {
+    font-size: 20px;
+    font-family: "Inter";
+    color: #fff;
+}
+.text2{
+    margin-top: 20px;
+    font-size: 20px;
+    font-family: "Inter";
+    color: #fff;
+}
