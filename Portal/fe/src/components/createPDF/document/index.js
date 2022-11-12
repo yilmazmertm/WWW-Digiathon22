@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Page,
   Text,
@@ -8,6 +8,7 @@ import {
   PDFDownloadLink,
 } from "@react-pdf/renderer";
 import { Button } from "@mui/material";
+import { blobToSHA256 } from "file-to-sha256";
 
 const styles = StyleSheet.create({
   page: {
@@ -23,6 +24,7 @@ const styles = StyleSheet.create({
 });
 
 export default function DocumentPDF({ name, surname }) {
+  const [hash, setHash] = useState("");
   const MyDocument = () => {
     return (
       <Document>
@@ -38,16 +40,24 @@ export default function DocumentPDF({ name, surname }) {
     );
   };
 
+  async function generateKey(blob) {
+    const hashTemp = await blobToSHA256(blob);
+    setHash(hashTemp);
+  }
+
   return (
     <div>
       <PDFDownloadLink document={<MyDocument />} fileName="Doc">
-        <Button
-          variant="contained"
-          sx={{ mt: 4, width: "400px", mx: "auto" }}
-          size="large"
-        >
-          Onayla ve İndir
-        </Button>
+        {({ blob }) => (
+          <Button
+            variant="contained"
+            sx={{ mt: 4, width: "400px", mx: "auto" }}
+            size="large"
+            onClick={() => generateKey(blob)}
+          >
+            Onayla ve İndir
+          </Button>
+        )}
       </PDFDownloadLink>
     </div>
   );
