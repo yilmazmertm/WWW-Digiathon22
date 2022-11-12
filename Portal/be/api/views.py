@@ -39,10 +39,11 @@ def transact(request):
     contract = w3_avax.eth.contract(address=settings.CONTRACT_ADDRESS, abi=get_abi())
     tx = contract.functions.registerDocument(document_hash, document_id).build_transaction({
         'from': '0xEE341dC67907a7bF4b33dB85B1e725bDFa8ed1fC',
+        'gasPrice': 25000000000
     })
     y = w3.eth.send_transaction(tx)
     w3.eth.wait_for_transaction_receipt(Web3.toHex(y))
     return response_200(data={
         "docId": document_id,
-        "txHash": Web3.toHex(x)
+        "txHash": Web3.toHex(y)
     })
