@@ -7,11 +7,15 @@ contract BYS is Ownable {
     mapping(address => bool) private _issuers;
     mapping(bytes32 => address) private _isRegisteredDocHash;
     mapping(string => bytes32) private _isRegisteredDoc;
-
-    address[] public tempAddressLs;
-
+    
     modifier onlyIssuer() {
         require(_issuers[msg.sender] == true, "Not a valid sender");
+        _;
+    }
+
+    modifier onlyNonRegisteredDoc(bytes32 docHash, string memory documentId) {
+        require(_isRegisteredDocHash[docHash] == address(0));
+        require(_isRegisteredDoc[documentId] == bytes32(0));
         _;
     }
 
@@ -19,19 +23,22 @@ contract BYS is Ownable {
         _issuers[_issuer] = true;
     }
 
+    function revoke(address _issuer) public onlyOwner {
+        _issuers[_issuer] = false;
+    }
+
     function isIssued(address caller) public view returns (bool) {
         return _issuers[caller];
     }
 
-    function registerDoc(bytes32 docHash, string memory documentId) public{
+    function registerDocument(bytes32 docHash, string memory documentId) public onlyIssuer onlyNonRegisteredDoc(docHash, documentId) {
       _isRegisteredDocHash[docHash] = msg.sender;
       _isRegisteredDoc[documentId] = docHash;
     }
 
-    function isRegisteredDoc(bytes32 docHash) public view returns (address){
+    function isRegisteredDocument(bytes32 docHash, string memory documentId) public view returns (address){
+        require( docHash != bytes32(0));
+        require(_isRegisteredDoc[documentId] == docHash, "Incorrect or non registered doc id");
         return _isRegisteredDocHash[docHash];
     }
-
-    
-
 }
