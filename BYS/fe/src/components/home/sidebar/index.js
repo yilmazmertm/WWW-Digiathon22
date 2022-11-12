@@ -18,7 +18,7 @@ export default function SiderBar() {
         veniam.
       </div>
       <div>
-        <button
+        <button className={styles.button}
           variant="contained"
           size="large"
           onClick={() => navigate("/info")}
