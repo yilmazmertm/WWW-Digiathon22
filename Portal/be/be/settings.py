@@ -17,6 +17,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -66,6 +67,7 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 STATIC_URL = '/static/'
+CORS_ORIGIN_ALLOW_ALL = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CONTRACT_ADDRESS = "0x422525b585B581C54681B75A9E7a37447Bfc375d"
 RPC_URL_AVAX = "http://176.236.121.139:9656/ext/bc/C/rpc"

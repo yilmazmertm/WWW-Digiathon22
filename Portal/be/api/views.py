@@ -43,11 +43,13 @@ def transact(request):
         })
         y = w3.eth.send_transaction(tx)
         w3.eth.wait_for_transaction_receipt(Web3.toHex(y))
+        print(document_id)
         return response_200(data={
             "docId": document_id,
             "txHash": Web3.toHex(y)
         })
     except Exception as e:
+        print(str(e))
         return response_200(data={
             "docId": "Eth Signer must be set up",
             "txHash": "Eth Signer must be set up"

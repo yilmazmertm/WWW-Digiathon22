@@ -40,7 +40,6 @@ export default function DocumentFile() {
           <Typography component="h1" variant="h5">
             Belge Sorgula
           </Typography>
-          <Button onClick={() => controlDocument("0x12", "TR01")}>Hey</Button>
           <Box component="form" noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
@@ -61,7 +60,12 @@ export default function DocumentFile() {
               autoComplete="current-password"
               onChange={(e) => generateKey(e.target.files[0])}
             />
-            <Button fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+            <Button
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              onClick={() => controlDocument(docId, docHash)}
+            >
               Sorgula
             </Button>
           </Box>
