@@ -29,14 +29,20 @@ export default function Form() {
         <div className={styles.text}>Bilgilerim</div>
         <div className={styles.container}>
           <div className={styles.section}>
-            <button
-              className={styles.button2}
-              variant="contained"
-              size="large"
-              onClick={() => walletConnect()}
-            >
-              Cüzdan Bağla
-            </button>
+            {wallet === "" ? (
+              <button
+                className={styles.button2}
+                variant="contained"
+                size="large"
+                onClick={() => {
+                  walletConnect().then((response) => setWallet(response));
+                }}
+              >
+                Cüzdan Bağla
+              </button>
+            ) : (
+              <p>{wallet}</p>
+            )}
           </div>
           <div className={styles.section}>
             <div className={styles.input}>

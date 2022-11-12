@@ -75,6 +75,7 @@ def verify_signature(request, wallet_address, signature):
 
     sign = Sign.objects.filter(wallet_address=wallet_address).last()
 
+    wallet_address = wallet_address.lower()
     raw_text = sign.text
     hashed_text_to_sign = encode_defunct(text=raw_text)
     returned_account = w3.eth.account.recover_message(hashed_text_to_sign, signature=signature)
