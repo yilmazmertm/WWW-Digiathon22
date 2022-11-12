@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import BysListCard from "../Card/BysListCard";
 import axios from "axios";
 import Grid from "@mui/material/Grid";
-import "./list.css"
+import "./list.css";
 const api = axios.create({ baseURL: process.env.REACT_APP_SERVER_URL });
 
 export default function List() {
@@ -16,7 +16,15 @@ export default function List() {
 
   return (
     <>
-      <Grid display={"flex"} flexWrap="wrap">
+      <Grid
+        display={"flex"}
+        flexWrap="wrap"
+        flexDirection={"row"}
+        width={"882px"}
+        justifyContent="space-between"
+        marginLeft={"50px"}
+        marginBottom="30px"
+      >
         <BysListCard data={data} />
       </Grid>
     </>

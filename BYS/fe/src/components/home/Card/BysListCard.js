@@ -1,13 +1,11 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { CardHeader, Grid } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
-import "./ByList.css"
+
 export default function BysListCard(data) {
   return (
     <>
