@@ -8,7 +8,7 @@ export default function University() {
           src={UniversityLogo}
           alt="Girl in a jacket"
           width="100%"
-          height="740px"
+          height="753px"
         />
       </div>
     </>

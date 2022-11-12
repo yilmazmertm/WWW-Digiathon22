@@ -1,44 +1,31 @@
 import React from "react";
 import Container from "@mui/material/Container";
 import { Typography, Button } from "@mui/material";
-
+import styles from "./login.module.css"
 export default function Form() {
   return (
     <>
-      {" "}
-      <Container
-        fixed
-        sx={{
-          background: "#fff",
-          height: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          position: "sticky",
-          top: 0,
-        }}
-      >
-        {" "}
-        <Typography variant="h3" component="h2">
-          İstanbul Üniversitesi
-        </Typography>
-        <Typography variant="h5" sx={{ mt: 2 }}>
+      <div className={styles.container} fixed>
+        <div className={styles.title}>İstanbul Üniversitesi</div>
+        <div className={styles.text}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt.
-        </Typography>
-        <Typography sx={{ mt: 2 }}>
+        </div>
+        <div className={styles.text2}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam.
-        </Typography>
-        <Button
-          variant="contained"
-          sx={{ mt: 4, width: "400px", mx: "auto" }}
-          size="large"
-        >
-          E-Devlet ile Giriş Yap
-        </Button>
-      </Container>
+        </div>
+        <div>
+          <button
+            className={styles.button}
+            variant="contained"
+            size="large"
+          >
+            E-Devlet ile Giriş Yap
+          </button>
+        </div>
+      </div>
     </>
   );
 }
