@@ -7,14 +7,11 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-<<<<<<< Updated upstream
 import { blobToSHA256 } from "file-to-sha256";
 import axios from "axios";
+import { controlDocument } from "../../Utils/utils";
 
 const api = axios.create({ baseURL: process.env.REACT_APP_SERVER_URL });
-=======
-import { controlDocument } from "../../Utils/utils";
->>>>>>> Stashed changes
 
 const theme = createTheme();
 
