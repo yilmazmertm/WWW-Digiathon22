@@ -10,6 +10,7 @@ import {
 import { Button } from "@mui/material";
 import { blobToSHA256 } from "file-to-sha256";
 import axios from "axios";
+import style from "./style.module.css";
 
 const api = axios.create({ baseURL: process.env.REACT_APP_SERVER_URL });
 
@@ -55,14 +56,16 @@ export default function DocumentPDF({ name, surname }) {
     <div>
       <PDFDownloadLink document={<MyDocument />} fileName="Doc">
         {({ blob }) => (
-          <Button
-            variant="contained"
-            sx={{ mt: 4, width: "400px", mx: "auto" }}
-            size="large"
-            onClick={() => generateKey(blob)}
-          >
-            Onayla ve İndir
-          </Button>
+          <div className={style.container}>
+            <div>
+              <button
+                className={style.button}
+                onClick={() => generateKey(blob)}
+              >
+                Onayla ve İndir
+              </button>
+            </div>
+          </div>
         )}
       </PDFDownloadLink>
     </div>

@@ -1,33 +1,29 @@
 import React from "react";
-import { TextField, Card } from "@mui/material";
+import styles from "./style.module.css";
 
 export default function Form({ setName, setSurname }) {
   return (
-    <Card
-      sx={{
-        mt: 4,
-        px: 4,
-        pt: 4,
-        pb: 4,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-      }}
-    >
-      <TextField
-        id="outlined-basic"
-        label="İsim"
-        variant="outlined"
-        sx={{ mt: 2 }}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <TextField
-        id="outlined-basic"
-        label="Soyisim"
-        variant="outlined"
-        sx={{ mt: 2 }}
-        onChange={(e) => setSurname(e.target.value)}
-      />
-    </Card>
+    <div>
+      <div className={styles.text}>Belge Oluşturma ve Doğrulama</div>
+      <div className={styles.container}>
+        <div className={styles.section}>
+          <div className={styles.input}>
+            <div className={styles.selectTitle}>İsim</div>
+            <div>
+              <input onChange={(e) => setName(e.target.value)}></input>
+            </div>
+          </div>
+        </div>
+        <div className={styles.section}>
+          <div className={styles.input}>
+            <div className={styles.selectTitle}>Soyisim</div>
+            <div>
+              <input onChange={(e) => setSurname(e.target.value)}></input>
+            </div>
+          </div>
+        </div>
+        <div className={styles.alert}></div>
+      </div>
+    </div>
   );
 }
