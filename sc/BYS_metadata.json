@@ -44,6 +44,25 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "docHash",
+						"type": "bytes32"
+					}
+				],
+				"name": "isRegisteredDoc",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "owner",
 				"outputs": [
@@ -78,7 +97,7 @@
 					},
 					{
 						"internalType": "string",
-						"name": "docId",
+						"name": "documentId",
 						"type": "string"
 					}
 				],
@@ -92,6 +111,25 @@
 				"name": "renounceOwnership",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "tempAddressLs",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -162,11 +200,11 @@
 			]
 		},
 		"contracts/BYS.sol": {
-			"keccak256": "0x64387d7d7c7998320c3e2f5c1a71a0ef017c2e8bacde112740e9870f00982e27",
+			"keccak256": "0x60bdd58f2d74b5c4ac01730a6d4f6c29f2bc48136ed27e0edf980cb646269f6b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://690afcc7ca0023fc9f1830ec959e9a78672ba2bf18fb2271b3db7a37d175af2c",
-				"dweb:/ipfs/QmauLv4gRhuQpMCJ4XcoNdVdcWoaC2N1bUSZBwDQuTVZ8n"
+				"bzz-raw://c578c163a8f76ca2f27f6274d15f8701d6dba90c2b9ac316dc1a864d7c20b43d",
+				"dweb:/ipfs/QmenqtsJvozdJueTB7Q9zGnJYSbZ3xqKmBARTk9Wo5pFRj"
 			]
 		}
 	},
