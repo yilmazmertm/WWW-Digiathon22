@@ -1,8 +1,10 @@
 import React from "react";
 import Container from "@mui/material/Container";
-import { Typography, Button, Grid } from "@mui/material";
+import { Typography, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function SiderBar() {
+  const navigate = useNavigate();
   return (
     <Container
       fixed
@@ -31,6 +33,7 @@ export default function SiderBar() {
         variant="contained"
         sx={{ mt: 4, width: "400px", mx: "auto" }}
         size="large"
+        onClick={() => navigate("/info")}
       >
         E-Devlet ile Giriş Yap
       </Button>
