@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.10.13",
+    "@react-pdf/font": "2.2.1",
+    "@react-pdf/fontkit": "2.0.2",
+    "@react-pdf/pdfkit": "2.1.0",
+    "@react-pdf/renderer": "2.0.19",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -12,6 +19,12 @@
     "react-scripts": "^4.0.3",
     "web-vitals": "^2.1.4"
   },
+  "overrides": {
+    "react-error-overlay": "6.0.9",
+    "@react-pdf/font": "2.2.1",
+    "@react-pdf/fontkit": "2.0.2",
+    "@react-pdf/pdfkit": "2.1.0"
+    },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
