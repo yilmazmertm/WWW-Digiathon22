@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { CardHeader, Grid } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
-
+import "./ByList.css"
 export default function BysListCard(data) {
   return (
     <>
@@ -17,11 +17,11 @@ export default function BysListCard(data) {
             <Box sx={{ maxWidth: 400, boxShadow: 3, borderRadius: 5, mt: 5 }}>
               <Card variant="outlined" sx={{ borderRadius: 5 }}>
                 <CardContent>
-                  <Grid>
-                    <Avatar src={data.logo_url} />
+                  <Grid display={"flex"}>
+                    <Avatar src={data.logo_url} sx={{width: 70, height: 70}} />
                     <CardHeader
                       title={data.name}
-                      sx={{ fontSize: 14 }}
+                      sx={{ fontSize: 14, fontWeight: 900, ml: 5 }}
                       color="text.secondary"
                       gutterBottom
                     ></CardHeader>
@@ -32,15 +32,7 @@ export default function BysListCard(data) {
                   <Typography sx={{ mb: 1.5 }} color="text.secondary">
                     Wallet Adress: {data.wallet_address}
                   </Typography>
-                  <Typography variant="body2">
-                    well meaning and kindly.
-                    <br />
-                    {'"a benevolent smile"'}
-                  </Typography>
                 </CardContent>
-                <CardActions>
-                  <Button size="small">Learn More</Button>
-                </CardActions>
               </Card>
             </Box>
           </Grid>

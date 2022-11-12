@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 
 export default function Home() {
   return (
-    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+    <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 5 }}>
       <Grid item xs={6}>
         <SiderBar />
       </Grid>
