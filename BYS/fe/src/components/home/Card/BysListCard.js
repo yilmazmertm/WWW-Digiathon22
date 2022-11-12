@@ -1,12 +1,6 @@
 import React from "react";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import { CardHeader, Grid } from "@mui/material";
-import Avatar from "@mui/material/Avatar";
 import styles from "./byList.module.css";
-import Logo from "../../../Asset/AdaletBakanligi.png";
+
 export default function BysListCard(data) {
   return (
     <>
