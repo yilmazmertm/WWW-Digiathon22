@@ -38,3 +38,15 @@ def create_authority(request):
         return response_200()
     except Exception as e:
         return response_500(e)
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_authority(request, wallet_address):
+    try:
+        authority = Authority.objects.get(wallet_address=wallet_address)
+    except Exception as e:
+        return response_500(e)
+
+    serializer = AuthorityDisplaySerializer(instance=authority, many=False)
+    return response_200(data=serializer.data)

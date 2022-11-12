@@ -7,10 +7,14 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+<<<<<<< Updated upstream
 import { blobToSHA256 } from "file-to-sha256";
 import axios from "axios";
 
 const api = axios.create({ baseURL: process.env.REACT_APP_SERVER_URL });
+=======
+import { controlDocument } from "../../Utils/utils";
+>>>>>>> Stashed changes
 
 const theme = createTheme();
 
@@ -39,6 +43,7 @@ export default function DocumentFile() {
           <Typography component="h1" variant="h5">
             Belge Sorgula
           </Typography>
+          <Button onClick={() => controlDocument("0x12", "TR01")}>Hey</Button>
           <Box component="form" noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
