@@ -27,7 +27,7 @@ export default function BysListCard(data) {
                     ></CardHeader>
                   </Grid>
                   <Typography variant="h5" component="div">
-                    BDS: TR000025
+                    BDS: {data.origin_code}
                   </Typography>
                   <Typography sx={{ mb: 1.5 }} color="text.secondary">
                     Wallet Adress: {data.wallet_address}
