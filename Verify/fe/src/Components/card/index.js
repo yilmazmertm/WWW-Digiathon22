@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./style.module.css";
 
 export default function Card(data) {
-  console.log(data);
   return (
     <div className={styles.container}>
       <div className={styles.header}>

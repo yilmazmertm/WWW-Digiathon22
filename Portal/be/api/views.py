@@ -23,7 +23,7 @@ def transact(request):
     if not request_status:
         return response_400()
 
-    document_id = DocumentId.objects.all().last()
+    document_id = DocumentId.objects.all().last().document_id
     document_hash = request.data['documentHash']
 
     w3 = connect_w3_instance("http://127.0.0.1:8545")

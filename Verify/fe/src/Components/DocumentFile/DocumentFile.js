@@ -8,7 +8,7 @@ const api = axios.create({ baseURL: process.env.REACT_APP_SERVER_URL });
 
 const theme = createTheme();
 
-export default function DocumentFile({setData}) {
+export default function DocumentFile({ setData }) {
   const [docId, setDocId] = useState("");
   const [docHash, setDocHash] = useState("");
   const [file, setFile] = useState("");
@@ -67,7 +67,7 @@ export default function DocumentFile({setData}) {
               className={styles.button}
               variant="contained"
               size="large"
-              onClick={() => controlDocument(docId, docHash, {setData})}
+              onClick={() => controlDocument(docHash, docId, { setData })}
             >
               Onayla
             </button>
