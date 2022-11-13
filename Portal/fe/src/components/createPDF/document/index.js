@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
 });
 
 export default function DocumentPDF({ name, surname }) {
+  const [loading, setLoading] = useState(false);
   const MyDocument = () => {
     return (
       <Document>
@@ -49,23 +50,25 @@ export default function DocumentPDF({ name, surname }) {
       .then((response) => {
         const href = URL.createObjectURL(response.data);
         blobToSHA256(response.data).then((response) => {
-          console.log(response);
+          setLoading(true);
           api
             .post("transact", {
               documentHash: response,
               name: name,
               surname: surname,
             })
-            .then((res) => alert(`Belge oluşturuldu.`));
+            .then(() => {
+              alert(`Belge oluşturuldu.`);
+              setLoading(false);
+              const link = document.createElement("a");
+              link.href = href;
+              link.setAttribute("download", "file.pdf");
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+              URL.revokeObjectURL(href);
+            });
         });
-
-        const link = document.createElement("a");
-        link.href = href;
-        link.setAttribute("download", "file.pdf");
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(href);
       });
   }
 
@@ -73,9 +76,15 @@ export default function DocumentPDF({ name, surname }) {
     <div>
       <div className={style.container}>
         <div>
-          <button className={style.button} onClick={() => generateKey()}>
-            Onayla ve İndir
-          </button>
+          {loading ? (
+            <button className={style.button}>
+              Yükleniyor...
+            </button>
+          ) : (
+            <button className={style.button} onClick={() => generateKey()}>
+              Onayla ve İndir
+            </button>
+          )}
         </div>
       </div>
     </div>
