@@ -6,9 +6,7 @@ export default function University() {
       <div>
         <img
           src={UniversityLogo}
-          alt="Girl in a jacket"
-          width="100%"
-          height="753px"
+          style={{width:"100%", height:"100vh"}}
         />
       </div>
     </>

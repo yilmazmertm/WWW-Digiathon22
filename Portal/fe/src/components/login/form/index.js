@@ -6,7 +6,7 @@ export default function Form() {
   return (
     <>
       <div className={styles.container} fixed>
-        <div className={styles.title}>İstanbul Üniversitesi</div>
+        <div className={styles.title}>Digiathon Kurumu</div>
         <div className={styles.text}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt.
