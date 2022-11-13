@@ -18,15 +18,18 @@ const theme = createTheme();
 export default function DocumentFile() {
   const [docId, setDocId] = useState("");
   const [docHash, setDocHash] = useState("");
+  const [file, setFile] = useState("");
 
   async function generateKey(file) {
     const hashTemp = await blobToSHA256(file);
     setDocHash(hashTemp);
+
+    console.log(file);
   }
 
   return (
     <>
-      <div>
+      <div style={{ marginLeft: "100px" }}>
         <div className={styles.text}>Belge Sorgula</div>
         <div className={styles.container}>
           <div className={styles.section}>
@@ -39,15 +42,35 @@ export default function DocumentFile() {
           </div>
           <div className={styles.section}>
             <div className={styles.input}>
-              <div className={styles.selectTitle}>Belge</div>
               <div>
                 <input
-                  type={"file"}
-                  onChange={(e) => generateKey(e.target.files[0])}
-                ></input>
+                  type="file"
+                  id="actual-btn"
+                  onChange={(e) => {
+                    generateKey(e.target.files[0]);
+                    setFile(e.target.files[0]);
+                  }}
+                  hidden
+                />
+                <label htmlFor="actual-btn" className={styles.upload}>
+                  Belge yükleyin
+                </label>
               </div>
             </div>
           </div>
+
+          {file && (
+            <div>
+              <div>
+                <div>
+                  <label className={styles.label}>
+                    Yüklenen Dosya: {file.name}
+                  </label>
+                </div>
+              </div>
+            </div>
+          )}
+
           <div>
             <button
               className={styles.button}
