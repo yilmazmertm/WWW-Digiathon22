@@ -12,7 +12,7 @@ var contract = new web3.eth.Contract(
   "0x422525b585B581C54681B75A9E7a37447Bfc375d"
 );
 
-export async function controlDocument(documentHash, documentId) {
+export async function controlDocument(documentHash, documentId, {setData}) {
   try {
     let walletAddress = await contract.methods
       .isRegisteredDocument(
@@ -23,6 +23,7 @@ export async function controlDocument(documentHash, documentId) {
 
     api.get(`get-authority/${walletAddress}`).then((response) => {
       console.log(response.data.data);
+      setData(response.data.data)
     });
   } catch (e) {
     return null;

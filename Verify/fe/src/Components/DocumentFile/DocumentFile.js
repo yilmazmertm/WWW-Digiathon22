@@ -1,11 +1,4 @@
 import React, { useState } from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { blobToSHA256 } from "file-to-sha256";
 import axios from "axios";
@@ -15,7 +8,7 @@ const api = axios.create({ baseURL: process.env.REACT_APP_SERVER_URL });
 
 const theme = createTheme();
 
-export default function DocumentFile() {
+export default function DocumentFile({setData}) {
   const [docId, setDocId] = useState("");
   const [docHash, setDocHash] = useState("");
   const [file, setFile] = useState("");
@@ -23,8 +16,6 @@ export default function DocumentFile() {
   async function generateKey(file) {
     const hashTemp = await blobToSHA256(file);
     setDocHash(hashTemp);
-
-    console.log(file);
   }
 
   return (
@@ -76,7 +67,7 @@ export default function DocumentFile() {
               className={styles.button}
               variant="contained"
               size="large"
-              onClick={() => controlDocument(docId, docHash)}
+              onClick={() => controlDocument(docId, docHash, {setData})}
             >
               Onayla
             </button>
