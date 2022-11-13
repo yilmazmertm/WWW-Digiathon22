@@ -9,16 +9,16 @@ export default function SiderBar() {
     <div className={styles.container} fixed>
       <div className={styles.title}>Evrensel Belge Yönetim Sistemi</div>
       <div className={styles.text}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt.
+        Evrensel Belge Yönetim Sistemi ile doğruluma ve sorgulama hizmetlerine
+        blok zincir altyapısı ekleyin !
       </div>
       <div className={styles.text2}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam.
+        E-devlet mekanizmasından aldığı güç ile otoritelerin cüzdan adreslerini
+        görün, belgelerinizi doğrulayın ve içeriğinin değişmediğinden emin olun.
       </div>
       <div>
-        <button className={styles.button}
+        <button
+          className={styles.button}
           variant="contained"
           size="large"
           onClick={() => navigate("/info")}

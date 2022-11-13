@@ -4,6 +4,7 @@ import Card from "../Components/card";
 
 export default function DocumentVerify() {
   const [data, setData] = useState(null);
+  console.log(data);
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
       <div
