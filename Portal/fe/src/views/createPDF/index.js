@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Form from "../../components/createPDF/form";
 import DocumentPDF from "../../components/createPDF/document";
 export default function CreatePdf() {
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
+  const [name, setName] = useState("MERT");
+  const [surname, setSurname] = useState("YILMAZ");
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
       <div
@@ -15,7 +15,7 @@ export default function CreatePdf() {
         }}
       ></div>
       <div style={{marginLeft:"60px"}}>
-        <Form setName={setName} setSurname={setSurname} />
+        <Form setName={setName} setSurname={setSurname} name={name} surname={surname} />
         <DocumentPDF name={name} surname={surname} />
       </div>
     </div>
