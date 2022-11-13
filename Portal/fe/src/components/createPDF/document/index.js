@@ -43,31 +43,41 @@ export default function DocumentPDF({ name, surname }) {
     );
   };
 
-  async function generateKey(blob) {
-    const hashTemp = await blobToSHA256(blob);
+  async function generateKey() {
     api
-      .post("transact", {
-        documentHash: hashTemp,
-      })
-      .then((res) => alert("Belge oluşturuldu."));
+      .get(`create-pdf/${name}/${surname}`, { responseType: "blob" })
+      .then((response) => {
+        const href = URL.createObjectURL(response.data);
+        blobToSHA256(response.data).then((response) => {
+          console.log(response);
+          api
+            .post("transact", {
+              documentHash: response,
+              name: name,
+              surname: surname,
+            })
+            .then((res) => alert(`Belge oluşturuldu.`));
+        });
+
+        const link = document.createElement("a");
+        link.href = href;
+        link.setAttribute("download", "file.pdf");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(href);
+      });
   }
 
   return (
     <div>
-      <PDFDownloadLink document={<MyDocument />} fileName="Doc">
-        {({ blob }) => (
-          <div className={style.container}>
-            <div>
-              <button
-                className={style.button}
-                onClick={() => generateKey(blob)}
-              >
-                Onayla ve İndir
-              </button>
-            </div>
-          </div>
-        )}
-      </PDFDownloadLink>
+      <div className={style.container}>
+        <div>
+          <button className={style.button} onClick={() => generateKey()}>
+            Onayla ve İndir
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

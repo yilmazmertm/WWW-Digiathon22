@@ -1,8 +1,8 @@
 import React from "react";
-import Container from "@mui/material/Container";
-import { Typography, Button } from "@mui/material";
-import styles from "./login.module.css"
+import styles from "./login.module.css";
+import { useNavigate } from "react-router-dom";
 export default function Form() {
+  const navigate = useNavigate();
   return (
     <>
       <div className={styles.container} fixed>
@@ -21,6 +21,7 @@ export default function Form() {
             className={styles.button}
             variant="contained"
             size="large"
+            onClick={() => navigate("/create")}
           >
             E-Devlet ile Giriş Yap
           </button>

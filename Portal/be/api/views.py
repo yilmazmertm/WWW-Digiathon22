@@ -1,9 +1,15 @@
+import io
+from random import randint
+
+from django.http import FileResponse
 from django.utils import timezone
+from reportlab.pdfgen import canvas
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from web3 import Web3
 
 from api.abi import get_abi
+from api.models import DocumentId
 from api.utils import connect_w3_instance
 from be import settings
 from be.responses import is_request_valid, response_400, response_500, response_200
@@ -17,17 +23,7 @@ def transact(request):
     if not request_status:
         return response_400()
 
-    from random import randint
-    s = ''
-    for i in range(16):
-        s = s + str(randint(0, 9))
-
-    now = timezone.now()
-    day = now.day
-    month = now.month
-    year = str(now.year)[-2:]
-
-    document_id = f"TR01-{day}{month}{year}-0016-343634457-{s}"
+    document_id = DocumentId.objects.all().last()
     document_hash = request.data['documentHash']
 
     w3 = connect_w3_instance("http://127.0.0.1:8545")
@@ -54,3 +50,36 @@ def transact(request):
             "docId": "Eth Signer must be set up",
             "txHash": "Eth Signer must be set up"
         })
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def create_pdf(request, name, surname):
+    s = ''
+    for i in range(16):
+        s = s + str(randint(0, 9))
+
+    now = timezone.now()
+    day = now.day
+    month = now.month
+    year = str(now.year)[-2:]
+
+    document_id = f"TR01-{day}{month}{year}-0016-343634457-{s}"
+
+    DocumentId.objects.create(
+        document_id=document_id
+    )
+
+    buffer = io.BytesIO()
+    p = canvas.Canvas(buffer)
+    p.setPageSize((990, 818))
+    p.drawImage("adli-sicil.png", x=0, y=0)
+    p.drawString(345, 325, f"{name} {surname}".upper())
+    p.drawString(340, 520, f"{document_id}")
+    p.setFontSize(16)
+
+    p.showPage()
+    p.save()
+
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename='hello.pdf')
