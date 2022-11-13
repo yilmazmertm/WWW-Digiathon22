@@ -12,8 +12,8 @@
   width: 886px;
   height: 56px;
   border-radius: 8px;
-  background: linear-gradient(180deg, rgb(69 69 72) 0%, #157d5f 100%),
-    linear-gradient(270.01deg, rgb(69 69 72) 0.01%, #157d5f 100%);
+  background: linear-gradient(180deg, rgb(69 69 72) 0%, #464276 100%),
+    linear-gradient(270.01deg, rgb(69 69 72) 0.01%, #464276 100%);
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
@@ -24,5 +24,5 @@
 }
 
 .button:hover {
-  background: linear-gradient(267.27deg, rgb(69 69 72) 1.57%, #157d5f 98.69%);
+  background: linear-gradient(267.27deg, rgb(69 69 72) 1.57%, #464276 98.69%);
 }

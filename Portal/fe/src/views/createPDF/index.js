@@ -11,7 +11,7 @@ export default function CreatePdf() {
           width: "600px",
           height: "100vh",
           background:
-            "linear-gradient(267.27deg, rgb(69 69 72) 1.57%, #157d5f 98.69%)",
+            "linear-gradient(267.27deg, rgb(69 69 72) 1.57%, #464276 98.69%)",
         }}
       ></div>
       <div style={{marginLeft:"60px"}}>

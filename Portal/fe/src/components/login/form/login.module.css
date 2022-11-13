@@ -1,5 +1,5 @@
 .container {
-  background: linear-gradient(267.27deg, rgb(69 69 72) 1.57%, #157d5f 98.69%);
+  background: linear-gradient(267.27deg, rgb(69 69 72) 1.57%, #464276 98.69%);
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -37,8 +37,8 @@
   margin-top: 50px;
   width: 300px;
   height: 56px;
-  background: linear-gradient(180deg, rgb(69 69 72) 0%, #157d5f 100%),
-    linear-gradient(270.01deg, rgb(69 69 72) 0.01%, #157d5f 100%);
+  background: linear-gradient(180deg, rgb(69 69 72) 0%, #464276 100%),
+    linear-gradient(270.01deg, rgb(69 69 72) 0.01%, #464276 100%);
   border-radius: 8px;
   font-family: "Inter";
   font-style: normal;
@@ -50,5 +50,5 @@
 }
 
 .button:hover {
-  background: linear-gradient(267.27deg, rgb(69 69 72) 1.57%, #157d5f 98.69%);
+  background: linear-gradient(267.27deg, rgb(69 69 72) 1.57%, #464276 98.69%);
 }

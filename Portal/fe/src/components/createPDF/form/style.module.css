@@ -5,12 +5,12 @@
   background: linear-gradient(
     180.3deg,
     rgba(236, 100, 111, 0) -6.44%,
-    #157d5f 99.74%
+    #464276 99.74%
   );
   border-radius: 16px;
   padding-top: 34px;
   padding-bottom: 39px;
-  border: 1px solid #157d5f;
+  border: 1px solid #464276;
 }
 
 .section {
@@ -74,8 +74,8 @@
   border-radius: 8px;
   outline: none;
   border: solid 1px transparent;
-  background-image: linear-gradient(rgb(69 69 72), #157d5f),
-    linear-gradient(101deg, rgb(69 69 72), #157d5f);
+  background-image: linear-gradient(rgb(69 69 72), #464276),
+    linear-gradient(101deg, rgb(69 69 72), #464276);
   background-origin: border-box;
   background-clip: content-box, border-box;
   box-shadow: 2px 1000px 1px #fff inset;
@@ -112,8 +112,8 @@
   border-radius: 8px;
   outline: none;
   border: solid 1px transparent;
-  background-image: linear-gradient(rgb(69 69 72), #157d5f),
-    linear-gradient(101deg, rgb(69 69 72), #157d5f);
+  background-image: linear-gradient(rgb(69 69 72), #464276),
+    linear-gradient(101deg, rgb(69 69 72), #464276);
   background-origin: border-box;
   background-clip: content-box, border-box;
   box-shadow: 2px 1000px 1px #fff inset;
@@ -165,7 +165,7 @@
   font-size: 30px;
   line-height: 33px;
   text-align: center;
-  background: linear-gradient(267.27deg, rgb(69 69 72)1.57%, #157d5f 98.69%);
+  background: linear-gradient(267.27deg, rgb(69 69 72)1.57%, #464276 98.69%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
